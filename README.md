@@ -14,6 +14,12 @@ I ended up building a few MoneyMoney extensions for myself but wanted something 
 - run `make` to compile Haxe to Lua
 - Copy `dist/out.lua` to your MoneyMoney extension folder
 
+## Helpers
+
+- JsonHelper: Use this to parse and stringify JSON within MoneyMoney
+- RequestHelper: Use this to make HTTP requests within MoneyMoney
+- Storage: Local storage wrapper 
+
 ## License
 
 MIT
