@@ -19,6 +19,8 @@ class RequestHelper {
 			var filename:String = null;
 			var responseHeaders:Map<String, String> = null;
 
+			var headers = Table.fromMap(headers);
+
 			if (requestMethod == "GET") {
 				untyped __lua__("content, charset, mimeType, filename, responseHeaders = connection:request(method, url, nil, headers['Content-Type'], headers)");
 			} else if (requestMethod == "POST") {
