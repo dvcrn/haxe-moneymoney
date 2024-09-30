@@ -2,28 +2,30 @@ import lua.Table;
 import RequestHelper;
 import JsonHelper;
 
-enum abstract AccountType(String) {
-	var AccountTypeGiro = "AccountTypeGiro";
-	var AccountTypeSavings = "AccountTypeSavings";
-	var AccountTypeFixedTermDeposit = "AccountTypeFixedTermDeposit";
-	var AccountTypeLoan = "AccountTypeLoan";
-	var AccountTypeCreditCard = "AccountTypeCreditCard";
-	var AccountTypePortfolio = "AccountTypePortfolio";
-	var AccountTypeOther = "AccountTypeOther";
-}
+// Account type constants
+var AccountTypeGiro = untyped __lua__("AccountTypeGiro") ;
+var AccountTypeSavings = untyped __lua__("AccountTypeSavings") ;
+var AccountTypeFixedTermDeposit = untyped __lua__("AccountTypeFixedTermDeposit") ;
+var AccountTypeLoan = untyped __lua__("AccountTypeLoan") ;
+var AccountTypeCreditCard = untyped __lua__("AccountTypeCreditCard") ;
+var AccountTypePortfolio = untyped __lua__("AccountTypePortfolio") ;
+var AccountTypeOther = untyped __lua__("AccountTypeOther") ;
+
+// Other constants
+var LoginFailed = untyped __lua__("LoginFailed") ;
 
 typedef Account = {
-	?name:String,
+    ?name:String,
 	?owner:String,
 	?accountNumber:String,
 	?subAccount:String,
 	?portfolio:Bool,
 	?bankCode:String,
 	?currency:String,
-	?iban:String,
-	?bic:String,
-	?balance:Float,
-	type:AccountType
+    ?iban:String,
+    ?bic:String,
+    ?balance:Float,
+    type:Dynamic,
 }
 
 typedef Transaction = {
@@ -111,13 +113,13 @@ class Main {
 
 		var account:Account = {
 			name: "ANA Pay",
-			accountNumber: "12345",
-			currency: "JPY",
-			balance: 12345,
-			type: AccountType.AccountTypeCreditCard,
-		};
+            accountNumber: "12345",
+            currency: "JPY",
+            balance: 12345,
+            type: AccountTypeCreditCard,
+        };
 
-		var results = Table.fromArray([account]);
+        var results = Table.fromArray([account]);
 
 		trace(results);
 
